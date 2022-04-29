@@ -9,6 +9,9 @@ import Foundation
 
 
 class TokenUtils {
+    
+    static let shared = TokenUtils()
+    
     func createJwt(value: String) {
         let keyChainQuery: NSDictionary = [
                    kSecClass : kSecClassGenericPassword,

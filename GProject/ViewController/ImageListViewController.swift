@@ -10,16 +10,22 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Kingfisher
+import SnapKit
+import Then
 
 
 class ImageListViewController: UIViewController {
-    
-    
     
     var topbox = UIView()
     var imageUploadBtn = UIButton()
     var capturedImage: UIImage?
     
+    let titleLabel = UILabel()
+        .then {
+            $0.text = "업로드한 이미지"
+            $0.textColor = .white
+            $0.font = UIFont.systemFont(ofSize: 27.0, weight: .bold)
+        }
     
     lazy var imageCv : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -38,9 +44,10 @@ class ImageListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = UIColor.appColor(.backgroundBlack)
         maketopbox()
         makeimageUploadbtn()
+        setTitleLabel()
         makecv()
         bindView()
     }
@@ -52,15 +59,13 @@ class ImageListViewController: UIViewController {
     
     
     private func bindView(){
-        
-        
         //collectionview Setup
         
         if let layout = imageCv.collectionViewLayout as? UICollectionViewFlowLayout {
-            let cellWidth = (UIScreen.main.bounds.width - 40) / 2
+            let cellWidth = (UIScreen.main.bounds.width - 80) / 3
             let cellHeight = cellWidth
             layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
-            layout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+            layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             layout.minimumLineSpacing = 10
             layout.minimumInteritemSpacing = 10
             
@@ -69,7 +74,7 @@ class ImageListViewController: UIViewController {
         //output
         viewModel.imageListData
             .bind(to: imageCv.rx.items(cellIdentifier: "imagelistCellid", cellType: ImageListCell.self)) { (row, element, cell) in
-                if let url = URL(string: element.url) {
+                if let url = URL(string: element.url ?? "") {
                     cell.image.kf.setImage(with: url)
                 }
                 else {
@@ -80,7 +85,7 @@ class ImageListViewController: UIViewController {
 
         //action
         imageCv.rx.modelSelected(ImageListData.self)
-            .map{ $0.imageFileId }
+            .map{ $0.imageFileId ?? 0 }
             .bind(to: viewModel.currentSelectedImage)
             .disposed(by: disposebag)
         
@@ -97,37 +102,47 @@ class ImageListViewController: UIViewController {
 extension ImageListViewController {
     private func maketopbox(){
         self.view.addSubview(topbox)
+        topbox.backgroundColor = .clear
         topbox.translatesAutoresizingMaskIntoConstraints = false
         topbox.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         topbox.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         topbox.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
         topbox.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        topbox.backgroundColor = .white
     }
     
     private func makeimageUploadbtn(){
         self.view.addSubview(imageUploadBtn)
         imageUploadBtn.translatesAutoresizingMaskIntoConstraints = false
         imageUploadBtn.centerYAnchor.constraint(equalTo: topbox.centerYAnchor, constant: 0).isActive = true
-        imageUploadBtn.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15).isActive = true
-        imageUploadBtn.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        imageUploadBtn.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        imageUploadBtn.setTitle("이미지 업로드 하기", for: .normal)
-        imageUploadBtn.backgroundColor = .black
-        imageUploadBtn.layer.cornerRadius = 5
-        imageUploadBtn.setTitleColor(.white, for: .normal)
-        imageUploadBtn.titleLabel?.adjustsFontSizeToFitWidth = true
-        imageUploadBtn.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        imageUploadBtn.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        imageUploadBtn.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -25).isActive = true
+//        imageUploadBtn.widthAnchor.constraint(equalToConstant: 100).isActive = true
+//        imageUploadBtn.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        imageUploadBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//        imageUploadBtn.backgroundColor = .black
+//        imageUploadBtn.layer.cornerRadius = 5
+//        imageUploadBtn.setTitleColor(.white, for: .normal)
+//        imageUploadBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+//        imageUploadBtn.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+//        imageUploadBtn.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+    
+    private func setTitleLabel() {
+        view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
+            $0.centerY.equalTo(topbox)
+            $0.left.equalToSuperview().offset(20.0)
+            $0.right.equalToSuperview().offset(-20.0)
+        }
     }
     
     private func makecv(){
         self.view.addSubview(imageCv)
         imageCv.translatesAutoresizingMaskIntoConstraints = false
         imageCv.topAnchor.constraint(equalTo: topbox.bottomAnchor, constant: 15).isActive = true
-        imageCv.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
-        imageCv.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
-        imageCv.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10).isActive = true
+        imageCv.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
+        imageCv.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
+        imageCv.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
         imageCv.layer.cornerRadius = 10
         imageCv.backgroundColor = .systemFill
     }

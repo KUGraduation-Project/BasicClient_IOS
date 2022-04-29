@@ -14,18 +14,13 @@ class UploadImageViewModel {
     var title: String?
     var content: String?
 
-    private let service : DataServiceType!
-    init(service : DataServiceType = DataService()) {
-        self.service = service
-    }
-
     let disposeBag = DisposeBag()
 
   
     // 매개변수 전달 대신 Relay로 바꿔야함
     func postImageToServer(image: UIImage) -> Observable<Int> {
         
-        return service.postImage(imageData: image.pngData()!)
+        return ProjectService.shared.postUploadFile(imageData: image.pngData()!)
     }
 
 }

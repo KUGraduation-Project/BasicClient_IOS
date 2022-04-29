@@ -11,20 +11,20 @@ import RxCocoa
 
 class RegisterViewModel {
     let disposeBag = DisposeBag()
-    private let service: DataServiceType!
+    private let service: DataServiceType = DataService()
     
     let emailTextRelay = BehaviorRelay<String>(value: "")
     let passwdTextRealy = BehaviorRelay<String>(value: "")
     let nicknameTextRelay = BehaviorRelay<String>(value: "")
     let birthDateRelay = PublishRelay<Date>()
     
-    var requestingUser = UserInfo(email: "", password: "", nickname: "", birth: "")
+    var requestingUser = UserInfo(nickname: "", birth: "")
     
     var validation = false
     
-    init(service: DataServiceType = DataService()) {
-        self.service = service
-    }
+//    init(service: DataServiceType = DataService()) {
+//        self.service = service
+//    }
     
     func setFormValidation() {
         isFormValid()
@@ -46,8 +46,7 @@ class RegisterViewModel {
             .combineLatest(emailTextRelay, passwdTextRealy, nicknameTextRelay, birthDateRelay)
             .map { email, passwd, nickname, birth in
                 if emailTest.evaluate(with: email) && passwd.count > 6 {
-                    self.requestingUser.email = email
-                    self.requestingUser.password = passwd
+                
                     self.requestingUser.nickname = nickname
                     self.requestingUser.birth = dateFormatter.string(from: birth)
                     return true

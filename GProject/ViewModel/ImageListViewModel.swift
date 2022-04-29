@@ -28,11 +28,11 @@ class ImageListViewModel {
 
     
     
-    private let service: DataServiceType!
+//    private let service: DataServiceType!
     private var disposebag = DisposeBag()
     
     init(service : DataServiceType = DataService()){
-        self.service = service
+//        self.service = service
         
 //        fetchdata()
         
@@ -54,11 +54,11 @@ class ImageListViewModel {
                 waitmodal.confirmBtn.rx.tap
                     .subscribe(onNext : { [unowned self] in
                     // 서버에 OCR 결과 요청
-                        self.service.check3dModel(imageFileId: currenSelectedImageId)
-                            .bind { checkProjectData in
-                                if checkProjectData.isModelExist {
+                        ProjectService.shared.getCheck3DModel(imageFileId: currenSelectedImageId)
+                            .bind { [weak self]response in
+                                if response.data?.modelExist ?? false {
                                     waitmodal.removeFromSuperview()
-                                    self.coordinate.start(projectId: self.projectId)
+                                    self?.coordinate.start(projectId: self?.projectId ?? 0)
                                 }
                                 else {
                                     ToastView.shared.short(txt_msg: "잠시만 기다려주세요.")
@@ -91,16 +91,16 @@ class ImageListViewModel {
                         popup.removeFromSuperview()
 //                        del.window?.addSubview(waitmodal)
                         
-                        service.postProjectInfo(data: ProjectRequestData(projectId: currenSelectedImageId, projectName: projectName))
-                            .subscribe(onNext : { [unowned self] data in
-                                print("DATA: ", data)
-                                if !data.isModelExist {
+                        ProjectService.shared.postCreateProject(data: ProjectRequestData(projectId: currenSelectedImageId, projectName: projectName))
+                            .subscribe(onNext : { [unowned self] response in
+                                print("DATA: ", response.data ?? "No Data")
+                                if !(response.data?.isModelExist ?? false) {
                                     del.window?.addSubview(waitmodal)
                                 }
                                 
                                 else {
-                                    self.projectId = data.projectId
-                                    self.coordinate.start(projectId: data.projectId)
+                                    self.projectId = response.data?.projectId ?? 0
+                                    self.coordinate.start(projectId: response.data?.projectId ?? 0)
                                 }
                                 
                                 //else: 모델 존재한다면 AR로 이동
@@ -123,10 +123,10 @@ class ImageListViewModel {
 
     func fetchdata(){
         FunctionClass.shared.showdialog(show: true)
-        service.getImageList()
-            .subscribe(onNext : { [unowned self] data in
-                print(data)
-                imageListData.accept(data)
+        ProjectService.shared.getImageList()
+            .subscribe(onNext : { [unowned self] response in
+                print(response.data ?? "No image")
+                imageListData.accept(response.data ?? [])
                 FunctionClass.shared.showdialog(show: false)
             })
             .disposed(by: disposebag)

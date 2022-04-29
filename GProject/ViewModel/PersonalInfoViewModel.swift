@@ -11,22 +11,22 @@ import RxCocoa
 
 class PersonalInfoViewModel {
     
-    private let service: DataServiceType!
+    private let service: DataServiceType = DataService()
     let disposeBag = DisposeBag()
     
     var infoSubject = BehaviorSubject<[String]>(value: [])
     
-    init(service: DataServiceType = DataService()) {
-        self.service = service
-    }
+//    init(service: DataServiceType = DataService()) {
+//        self.service = service
+//    }
     
     func getMyInfo() {
-        service.getMe()
-            .bind { userData in
+        UserService.shared.getUserInfo()
+            .bind { result in
                 var list: [String] = []
-                list.append("이메일: \(userData.email)")
-                list.append("닉네임: \(userData.nickname)")
-                list.append("생일: \(userData.birth)")
+                list.append("이메일: \(result.data?.email ?? "" )")
+                list.append("닉네임: \(result.data?.nickname ?? "" )")
+                list.append("생일: \(result.data?.birth ?? "" )")
                 
                 self.infoSubject.onNext(list)
                 

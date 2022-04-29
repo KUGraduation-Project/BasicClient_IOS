@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0417652626A5052C00E2C4F7 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417652526A5052C00E2C4F7 /* TableViewCell.swift */; };
+		0417652626A5052C00E2C4F7 /* NeighborTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417652526A5052C00E2C4F7 /* NeighborTableViewCell.swift */; };
 		0417652826A50E9900E2C4F7 /* UploadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417652726A50E9900E2C4F7 /* UploadImageViewController.swift */; };
 		0417652C26A6D72600E2C4F7 /* TokenUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417652B26A6D72600E2C4F7 /* TokenUtils.swift */; };
 		0417653426A86DEC00E2C4F7 /* GProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417653326A86DEC00E2C4F7 /* GProjectTests.swift */; };
@@ -16,6 +16,17 @@
 		04328B0227250CED00186DD1 /* addImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 04328B0127250CED00186DD1 /* addImage.png */; };
 		04328B042725304600186DD1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04328B032725304600186DD1 /* SettingViewController.swift */; };
 		04328B062725346400186DD1 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04328B052725346400186DD1 /* SettingViewModel.swift */; };
+		04335E79281AF92E00BA765C /* ProjectHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E78281AF92E00BA765C /* ProjectHeaderReusableView.swift */; };
+		04335E7B281AFA0F00BA765C /* AddingProjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E7A281AFA0F00BA765C /* AddingProjectButton.swift */; };
+		04335E7D281B7AC400BA765C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E7C281B7AC400BA765C /* TabBarViewController.swift */; };
+		04335E7F281B7FBC00BA765C /* NeighborListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E7E281B7FBC00BA765C /* NeighborListViewController.swift */; };
+		04335E81281BA8A000BA765C /* NeighborListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E80281BA8A000BA765C /* NeighborListViewModel.swift */; };
+		04335E83281BAD1300BA765C /* NeighborNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E82281BAD1300BA765C /* NeighborNoticeViewController.swift */; };
+		04335E85281BAD3B00BA765C /* NeighborSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E84281BAD3B00BA765C /* NeighborSearchViewController.swift */; };
+		04335E87281BB04000BA765C /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E86281BB04000BA765C /* SearchBarView.swift */; };
+		04335E8A281BE7B500BA765C /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E89281BE7B500BA765C /* UIColor+Ext.swift */; };
+		04335E8C281BF2C800BA765C /* NeighborProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E8B281BF2C800BA765C /* NeighborProjectListViewController.swift */; };
+		04335E8E281BF32C00BA765C /* NeighborProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E8D281BF32C00BA765C /* NeighborProjectListViewModel.swift */; };
 		04435F31269B16EF00030944 /* kakao_login_medium_narrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 04435F30269B16EF00030944 /* kakao_login_medium_narrow.png */; };
 		04435F33269B25D200030944 /* kakao_signup_medium_narrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 04435F32269B25D200030944 /* kakao_signup_medium_narrow.png */; };
 		04435F35269B56F700030944 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04435F34269B56F700030944 /* ProjectListViewController.swift */; };
@@ -25,8 +36,21 @@
 		0449D800269AF03700BCC781 /* GProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0449D7FE269AF03700BCC781 /* GProject.xcdatamodeld */; };
 		0449D802269AF03800BCC781 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0449D801269AF03800BCC781 /* Assets.xcassets */; };
 		0449D805269AF03800BCC781 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0449D803269AF03800BCC781 /* LaunchScreen.storyboard */; };
+		0475375E281674B800E4300A /* UserEndpointCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475375D281674B800E4300A /* UserEndpointCases.swift */; };
+		047537602816752400E4300A /* ProjectEndpointCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475375F2816752400E4300A /* ProjectEndpointCases.swift */; };
+		047537632818CC6500E4300A /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047537622818CC6500E4300A /* EndPoint.swift */; };
+		047537652818D14D00E4300A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047537642818D14D00E4300A /* NetworkError.swift */; };
+		047537672818D16D00E4300A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047537662818D16D00E4300A /* Service.swift */; };
+		047537692818FFCC00E4300A /* NeighborEndpointCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047537682818FFCC00E4300A /* NeighborEndpointCases.swift */; };
+		0475376B2818FFEF00E4300A /* ProjectShareEndpointCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475376A2818FFEF00E4300A /* ProjectShareEndpointCases.swift */; };
+		0475376E281910AD00E4300A /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475376D281910AD00E4300A /* UserService.swift */; };
+		04753770281914A800E4300A /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475376F281914A800E4300A /* ProjectService.swift */; };
+		04753772281914B800E4300A /* NeighborService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04753771281914B800E4300A /* NeighborService.swift */; };
+		04753774281914D600E4300A /* ProjectShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04753773281914D600E4300A /* ProjectShareService.swift */; };
+		04753776281A61AF00E4300A /* Neighbor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04753775281A61AF00E4300A /* Neighbor.swift */; };
+		04753778281A655800E4300A /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04753777281A655800E4300A /* Share.swift */; };
 		047946E92711B1070092C880 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047946E82711B1070092C880 /* RegisterViewModel.swift */; };
-		04813D4926D5DDDC0083A3EE /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04813D4826D5DDDC0083A3EE /* CollectionViewCell.swift */; };
+		04813D4926D5DDDC0083A3EE /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04813D4826D5DDDC0083A3EE /* ProjectCell.swift */; };
 		04813D4B26D683AA0083A3EE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04813D4A26D683AA0083A3EE /* RegisterViewController.swift */; };
 		04AE242926B78C8B005F11F2 /* GProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE242826B78C8B005F11F2 /* GProjectUITests.swift */; };
 		04B22BB427255366007801CD /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B22BB327255366007801CD /* PersonalInfoViewController.swift */; };
@@ -88,7 +112,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0417652526A5052C00E2C4F7 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		0417652526A5052C00E2C4F7 /* NeighborTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborTableViewCell.swift; sourceTree = "<group>"; };
 		0417652726A50E9900E2C4F7 /* UploadImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageViewController.swift; sourceTree = "<group>"; };
 		0417652B26A6D72600E2C4F7 /* TokenUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUtils.swift; sourceTree = "<group>"; };
 		0417653126A86DEC00E2C4F7 /* GProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +123,17 @@
 		04328B0127250CED00186DD1 /* addImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addImage.png; sourceTree = "<group>"; };
 		04328B032725304600186DD1 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		04328B052725346400186DD1 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		04335E78281AF92E00BA765C /* ProjectHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectHeaderReusableView.swift; sourceTree = "<group>"; };
+		04335E7A281AFA0F00BA765C /* AddingProjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingProjectButton.swift; sourceTree = "<group>"; };
+		04335E7C281B7AC400BA765C /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		04335E7E281B7FBC00BA765C /* NeighborListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborListViewController.swift; sourceTree = "<group>"; };
+		04335E80281BA8A000BA765C /* NeighborListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborListViewModel.swift; sourceTree = "<group>"; };
+		04335E82281BAD1300BA765C /* NeighborNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborNoticeViewController.swift; sourceTree = "<group>"; };
+		04335E84281BAD3B00BA765C /* NeighborSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborSearchViewController.swift; sourceTree = "<group>"; };
+		04335E86281BB04000BA765C /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		04335E89281BE7B500BA765C /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		04335E8B281BF2C800BA765C /* NeighborProjectListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborProjectListViewController.swift; sourceTree = "<group>"; };
+		04335E8D281BF32C00BA765C /* NeighborProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborProjectListViewModel.swift; sourceTree = "<group>"; };
 		04435F30269B16EF00030944 /* kakao_login_medium_narrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakao_login_medium_narrow.png; sourceTree = "<group>"; };
 		04435F32269B25D200030944 /* kakao_signup_medium_narrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakao_signup_medium_narrow.png; sourceTree = "<group>"; };
 		04435F34269B56F700030944 /* ProjectListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
@@ -110,8 +145,21 @@
 		0449D801269AF03800BCC781 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0449D804269AF03800BCC781 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0449D806269AF03800BCC781 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0475375D281674B800E4300A /* UserEndpointCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpointCases.swift; sourceTree = "<group>"; };
+		0475375F2816752400E4300A /* ProjectEndpointCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEndpointCases.swift; sourceTree = "<group>"; };
+		047537622818CC6500E4300A /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		047537642818D14D00E4300A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		047537662818D16D00E4300A /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		047537682818FFCC00E4300A /* NeighborEndpointCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborEndpointCases.swift; sourceTree = "<group>"; };
+		0475376A2818FFEF00E4300A /* ProjectShareEndpointCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectShareEndpointCases.swift; sourceTree = "<group>"; };
+		0475376D281910AD00E4300A /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		0475376F281914A800E4300A /* ProjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
+		04753771281914B800E4300A /* NeighborService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborService.swift; sourceTree = "<group>"; };
+		04753773281914D600E4300A /* ProjectShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectShareService.swift; sourceTree = "<group>"; };
+		04753775281A61AF00E4300A /* Neighbor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neighbor.swift; sourceTree = "<group>"; };
+		04753777281A655800E4300A /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		047946E82711B1070092C880 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
-		04813D4826D5DDDC0083A3EE /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		04813D4826D5DDDC0083A3EE /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		04813D4A26D683AA0083A3EE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		04AE242626B78C8B005F11F2 /* GProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04AE242826B78C8B005F11F2 /* GProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GProjectUITests.swift; sourceTree = "<group>"; };
@@ -189,11 +237,14 @@
 		0417652426A5050900E2C4F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0417652526A5052C00E2C4F7 /* TableViewCell.swift */,
+				0417652526A5052C00E2C4F7 /* NeighborTableViewCell.swift */,
 				2FCE866F272539AF002100FA /* ImageListCell.swift */,
 				2FCE8670272539AF002100FA /* ObjectSelectionCell.swift */,
-				04813D4826D5DDDC0083A3EE /* CollectionViewCell.swift */,
+				04813D4826D5DDDC0083A3EE /* ProjectCell.swift */,
 				2F9CB4BD272550B300476A90 /* ProjectNameInputPopUp.swift */,
+				04335E78281AF92E00BA765C /* ProjectHeaderReusableView.swift */,
+				04335E7A281AFA0F00BA765C /* AddingProjectButton.swift */,
+				04335E86281BB04000BA765C /* SearchBarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,6 +256,14 @@
 				0417653526A86DEC00E2C4F7 /* Info.plist */,
 			);
 			path = GProjectTests;
+			sourceTree = "<group>";
+		};
+		04335E88281BE7A800BA765C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				04335E89281BE7B500BA765C /* UIColor+Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		04435F2F269B16D100030944 /* icon */ = {
@@ -243,6 +302,7 @@
 		0449D7F4269AF03700BCC781 /* GProject */ = {
 			isa = PBXGroup;
 			children = (
+				04335E88281BE7A800BA765C /* Extension */,
 				2FCE8673272539B9002100FA /* ARfiles */,
 				2F9CB4B227253A1E00476A90 /* Coordinator */,
 				0417652426A5050900E2C4F7 /* View */,
@@ -264,6 +324,39 @@
 			path = GProject;
 			sourceTree = "<group>";
 		};
+		0475375C2816749400E4300A /* EndpointCases */ = {
+			isa = PBXGroup;
+			children = (
+				0475375D281674B800E4300A /* UserEndpointCases.swift */,
+				0475375F2816752400E4300A /* ProjectEndpointCases.swift */,
+				047537682818FFCC00E4300A /* NeighborEndpointCases.swift */,
+				0475376A2818FFEF00E4300A /* ProjectShareEndpointCases.swift */,
+			);
+			path = EndpointCases;
+			sourceTree = "<group>";
+		};
+		047537612818CC5400E4300A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0417652B26A6D72600E2C4F7 /* TokenUtils.swift */,
+				047537622818CC6500E4300A /* EndPoint.swift */,
+				047537642818D14D00E4300A /* NetworkError.swift */,
+				047537662818D16D00E4300A /* Service.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0475376C2819106400E4300A /* DataServices */ = {
+			isa = PBXGroup;
+			children = (
+				0475376D281910AD00E4300A /* UserService.swift */,
+				0475376F281914A800E4300A /* ProjectService.swift */,
+				04753771281914B800E4300A /* NeighborService.swift */,
+				04753773281914D600E4300A /* ProjectShareService.swift */,
+			);
+			path = DataServices;
+			sourceTree = "<group>";
+		};
 		04AE242726B78C8B005F11F2 /* GProjectUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +372,8 @@
 				04E5A11F26A037FF000DAD7F /* User.swift */,
 				04E5A12326A03ABE000DAD7F /* Project.swift */,
 				0417653B26B38E5E00E2C4F7 /* Table.swift */,
+				04753775281A61AF00E4300A /* Neighbor.swift */,
+				04753777281A655800E4300A /* Share.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,6 +391,11 @@
 				04328B032725304600186DD1 /* SettingViewController.swift */,
 				04B22BB327255366007801CD /* PersonalInfoViewController.swift */,
 				04B22BB7272564A2007801CD /* CorrectPasswordViewController.swift */,
+				04335E7C281B7AC400BA765C /* TabBarViewController.swift */,
+				04335E7E281B7FBC00BA765C /* NeighborListViewController.swift */,
+				04335E82281BAD1300BA765C /* NeighborNoticeViewController.swift */,
+				04335E84281BAD3B00BA765C /* NeighborSearchViewController.swift */,
+				04335E8B281BF2C800BA765C /* NeighborProjectListViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -314,6 +414,8 @@
 				04328B052725346400186DD1 /* SettingViewModel.swift */,
 				04B22BB52725543C007801CD /* PersonalInfoViewModel.swift */,
 				0431E61E272A685B00C75B68 /* CorrectPasswordViewModel.swift */,
+				04335E80281BA8A000BA765C /* NeighborListViewModel.swift */,
+				04335E8D281BF32C00BA765C /* NeighborProjectListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -321,9 +423,11 @@
 		04E5A11D26A0375E000DAD7F /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				0475376C2819106400E4300A /* DataServices */,
+				047537612818CC5400E4300A /* Core */,
+				0475375C2816749400E4300A /* EndpointCases */,
 				04E5A12126A038CB000DAD7F /* DataServiceType.swift */,
 				04E5A12526A0405F000DAD7F /* DataService.swift */,
-				0417652B26A6D72600E2C4F7 /* TokenUtils.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -602,21 +706,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04335E85281BAD3B00BA765C /* NeighborSearchViewController.swift in Sources */,
+				04335E7B281AFA0F00BA765C /* AddingProjectButton.swift in Sources */,
 				2FCE866E27253996002100FA /* ObjectSelectViewController.swift in Sources */,
 				2FCE8683272539B9002100FA /* FocusSquareSegment.swift in Sources */,
 				2FCE86682725397E002100FA /* ARViewModel.swift in Sources */,
 				2FCE8682272539B9002100FA /* VirtualObjectARView.swift in Sources */,
 				2F9CB4B427253A1E00476A90 /* ViewCoordinator.swift in Sources */,
+				04335E8A281BE7B500BA765C /* UIColor+Ext.swift in Sources */,
 				0417652826A50E9900E2C4F7 /* UploadImageViewController.swift in Sources */,
 				2FCE86662725397E002100FA /* ImageListViewModel.swift in Sources */,
+				04753776281A61AF00E4300A /* Neighbor.swift in Sources */,
 				04328B042725304600186DD1 /* SettingViewController.swift in Sources */,
 				2FCE867E272539B9002100FA /* VirtualObjectInteraction.swift in Sources */,
 				04E5A12C26A047F9000DAD7F /* UploadImageViewModel.swift in Sources */,
 				2FCE867F272539B9002100FA /* VirtualObjectLoader.swift in Sources */,
+				04335E7F281B7FBC00BA765C /* NeighborListViewController.swift in Sources */,
 				2FCE8680272539B9002100FA /* ThresholdPanGesture.swift in Sources */,
+				04335E8C281BF2C800BA765C /* NeighborProjectListViewController.swift in Sources */,
 				2F9CB4BE272550B300476A90 /* ProjectNameInputPopUp.swift in Sources */,
 				2FCE868C272539C5002100FA /* FunctionClass.swift in Sources */,
+				04335E83281BAD1300BA765C /* NeighborNoticeViewController.swift in Sources */,
 				2FCE868E272539C5002100FA /* ThumbnailGenerator.swift in Sources */,
+				04753778281A655800E4300A /* Share.swift in Sources */,
 				04E5A12626A0405F000DAD7F /* DataService.swift in Sources */,
 				0417652C26A6D72600E2C4F7 /* TokenUtils.swift in Sources */,
 				2FCE8671272539AF002100FA /* ImageListCell.swift in Sources */,
@@ -627,27 +739,43 @@
 				0449D7FA269AF03700BCC781 /* LoginViewController.swift in Sources */,
 				04E5A12226A038CB000DAD7F /* DataServiceType.swift in Sources */,
 				2FCE866C27253996002100FA /* ImageListViewController.swift in Sources */,
-				0417652626A5052C00E2C4F7 /* TableViewCell.swift in Sources */,
+				0417652626A5052C00E2C4F7 /* NeighborTableViewCell.swift in Sources */,
+				0475376B2818FFEF00E4300A /* ProjectShareEndpointCases.swift in Sources */,
 				04E5A13026A04B7F000DAD7F /* LoginViewModel.swift in Sources */,
-				04813D4926D5DDDC0083A3EE /* CollectionViewCell.swift in Sources */,
+				0475376E281910AD00E4300A /* UserService.swift in Sources */,
+				04335E7D281B7AC400BA765C /* TabBarViewController.swift in Sources */,
+				04813D4926D5DDDC0083A3EE /* ProjectCell.swift in Sources */,
 				2FCE868D272539C5002100FA /* ToastView.swift in Sources */,
 				04813D4B26D683AA0083A3EE /* RegisterViewController.swift in Sources */,
+				047537602816752400E4300A /* ProjectEndpointCases.swift in Sources */,
+				04753774281914D600E4300A /* ProjectShareService.swift in Sources */,
 				2FCE8672272539AF002100FA /* ObjectSelectionCell.swift in Sources */,
 				0449D7F6269AF03700BCC781 /* AppDelegate.swift in Sources */,
 				04E5A12026A037FF000DAD7F /* User.swift in Sources */,
 				0417653C26B38E5E00E2C4F7 /* Table.swift in Sources */,
 				04328B062725346400186DD1 /* SettingViewModel.swift in Sources */,
 				2FCE868F272539C5002100FA /* Extensions.swift in Sources */,
+				04335E79281AF92E00BA765C /* ProjectHeaderReusableView.swift in Sources */,
 				2FCE86672725397E002100FA /* ObjectCellModel.swift in Sources */,
+				0475375E281674B800E4300A /* UserEndpointCases.swift in Sources */,
+				04753772281914B800E4300A /* NeighborService.swift in Sources */,
+				047537632818CC6500E4300A /* EndPoint.swift in Sources */,
+				04335E87281BB04000BA765C /* SearchBarView.swift in Sources */,
+				04335E81281BA8A000BA765C /* NeighborListViewModel.swift in Sources */,
 				2FCE86652725397E002100FA /* ObjectSelectViewModel.swift in Sources */,
 				0449D7F8269AF03700BCC781 /* SceneDelegate.swift in Sources */,
+				04753770281914A800E4300A /* ProjectService.swift in Sources */,
+				047537692818FFCC00E4300A /* NeighborEndpointCases.swift in Sources */,
 				047946E92711B1070092C880 /* RegisterViewModel.swift in Sources */,
 				04435F35269B56F700030944 /* ProjectListViewController.swift in Sources */,
 				04E5A12426A03ABE000DAD7F /* Project.swift in Sources */,
 				2FCE8684272539B9002100FA /* FocusSquare.swift in Sources */,
 				2FCE8681272539B9002100FA /* VirtualObject.swift in Sources */,
+				047537672818D16D00E4300A /* Service.swift in Sources */,
+				04335E8E281BF32C00BA765C /* NeighborProjectListViewModel.swift in Sources */,
 				2FCE866D27253996002100FA /* ARViewController.swift in Sources */,
 				0449D800269AF03700BCC781 /* GProject.xcdatamodeld in Sources */,
+				047537652818D14D00E4300A /* NetworkError.swift in Sources */,
 				2FCE868B272539C5002100FA /* Utilities.swift in Sources */,
 				04E5A12826A047A6000DAD7F /* ProjectListViewModel.swift in Sources */,
 			);

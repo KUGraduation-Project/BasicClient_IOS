@@ -18,6 +18,8 @@ protocol ObjectSelectionCoordinatorProtocol : AnyObject {
 
 class ViewCoordinator  {
     
+    var isMe: Bool = true
+    
     var disposebag = DisposeBag()
     
     var rootView = ARViewController()
@@ -55,6 +57,10 @@ class ViewCoordinator  {
     
     
     private func showObjectselectionViewController(){
+        if !isMe {
+            return
+        }
+        
         bottomsheet = ObjectSelectViewController(frame: .zero, viewmodel: ObjectSelectViewModel())
         bottomsheet.viewModel.coordinator = self
         rootView.view.addSubview(bottomsheet)

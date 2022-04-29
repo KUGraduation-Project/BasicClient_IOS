@@ -70,12 +70,12 @@ class LoginViewController: UIViewController {
     private func setForm() {
         emailForm.borderStyle = .roundedRect
         emailForm.placeholder = "email"
-        emailForm.text = "aaa@naver.com"
+        emailForm.text = "bbb@naver.com"
         
         passwdForm.borderStyle = .roundedRect
         passwdForm.isSecureTextEntry = true
         passwdForm.placeholder = "password"
-        passwdForm.text = "aaapassword"
+        passwdForm.text = "password"
     }
     
     private func setLoginButton() {
@@ -114,7 +114,7 @@ class LoginViewController: UIViewController {
         
         viewModel.userData
             .bind { userDataRes in
-                if(!userDataRes.authorities.isEmpty) {
+                if(!(userDataRes.data?.authorities?.isEmpty ?? false)) {
                     self.moveToMainPage()
                 }
                 else {
@@ -144,13 +144,13 @@ class LoginViewController: UIViewController {
     
     func moveToMainPage() {
         
-        let listPage: ProjectListViewController = ProjectListViewController()
-        listPage.title = "Project"
+//        let listPage: ProjectListViewController = ProjectListViewController()
+        
+        let listPage = TabBarViewController()
         
         let navController = UINavigationController(rootViewController: listPage)
             
-        navController.isNavigationBarHidden = false
-        
+        navController.isNavigationBarHidden = true
         
         guard let scene = UIApplication.shared.connectedScenes.first else { return }
         guard let del = scene.delegate as? SceneDelegate else { return }

@@ -19,24 +19,24 @@ enum LoginType {
 protocol DataServiceType {
     
     func addUser(userInfo: UserInfo) -> Observable<Bool>
-    func loginUser(userInfo: UserInfo) -> Observable<Bool>
-    func getMe() -> Observable<UserData>
+//    func loginUser(userInfo: UserInfo) -> Observable<Bool>
+//    func getMe() -> Observable<UserData>
     
-    func postImage(imageData: Data) -> Observable<Int>
+//    func postImage(imageData: Data) -> Observable<Int>
     
     // 일단은 Bool로 하고 나중에 수정..
-    func postProjectInfo(data: ProjectRequestData) -> Observable<CreateProjectData>
+//    func postProjectInfo(data: ProjectRequestData) -> Observable<CreateProjectData>
     
     
-    func getAllProject() -> Observable<[ProjectListObjectData]>
+//    func getAllProject() -> Observable<[ProjectListObjectData]>
     
-    func getImageList() -> Observable<[ImageListData]>
+//    func getImageList() -> Observable<[ImageListData]>
     
     func withdrawal() -> Observable<Bool>
-    func check3dModel(imageFileId: Int) -> Observable<CheckProjectData>
+//    func check3dModel(imageFileId: Int) -> Observable<CheckProjectData>
     
     
-    func getProjectDetail(projectId : Int) -> Observable<CoordinateModel>
-    func saveProject(projectId : Int,furnitures : [FurniturePostModel]) -> Observable<Bool>
+//    func getProjectDetail(projectId : Int) -> Observable<CoordinateModel>
+//    func saveProject(projectId : Int,furnitures : [FurniturePostModel]) -> Observable<Bool>
     
 }

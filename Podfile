@@ -13,6 +13,9 @@ target 'GProject' do
 	pod 'Kingfisher', '~> 7.0'
   pod "RxGesture"
   pod 'SwiftyJSON'
+	pod 'SnapKit'
+	pod 'Then'
+	pod 'RxDataSources'
 end
 
 

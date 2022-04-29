@@ -28,7 +28,7 @@ class ImageListCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         DispatchQueue.main.async { [unowned self] in
-            image.layer.cornerRadius = 12.5
+            image.layer.cornerRadius = 8.0
             image.clipsToBounds = true
         }
 

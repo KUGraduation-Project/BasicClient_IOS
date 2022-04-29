@@ -69,7 +69,8 @@ class ARViewModel: NSObject {
     
     func getCoordinates(projectId : Int) -> Observable<([([Int],[Int])],height : CGFloat, width : CGFloat)> {
         self.projectId = projectId
-        return service.getProjectDetail(projectId: projectId)
+        
+        return ProjectService.shared.getOpenProject(projectId: projectId)
             .map{ [unowned self] data -> ([([Int],[Int])],height : CGFloat, width : CGFloat) in
                 if data.coordinates.count == 0 {
                     coordinator?.goback()
@@ -176,7 +177,8 @@ class ARViewModel: NSObject {
     
     func uploadFurnitures(){
         print("uploadFurnitures pressed")
-        service.saveProject(projectId: projectId, furnitures: self.furnitureDatasToPost)
+        
+        ProjectService.shared.postSaveProject(projectId: projectId, furnitures: self.furnitureDatasToPost)
             .subscribe(onNext : { done in
                 if done {
                     ToastView.shared.short(txt_msg: "가구가저장 되었습니다.")

@@ -9,6 +9,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Alamofire
+import Then
+import SnapKit
 
 class UploadImageViewController: UIViewController {
     
@@ -20,9 +22,9 @@ class UploadImageViewController: UIViewController {
     var indicator = UIActivityIndicatorView()
     
     var capturedImage: UIImage!
+    
     let viewModel = UploadImageViewModel()
-
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()

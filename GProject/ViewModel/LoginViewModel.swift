@@ -11,24 +11,28 @@ import RxCocoa
 
 
 class LoginViewModel {
-
+    
     let disposeBag = DisposeBag()
     
-    var requestingUser = UserInfo(email: "", password: "", nickname: "", birth: "")
+    //Input
+    let emailTextRelay = BehaviorRelay<String>(value: "")
+    let passwdTextRealy = BehaviorRelay<String>(value: "")
+    
+    //Output
+    var requestingUser = BehaviorRelay<LoginRequestDTO>(value: LoginRequestDTO(email: "", password: ""))
 
-    var userData = PublishSubject<UserData>()
+    var userData = PublishSubject<UserInfoResponse>()
     
     var validation = false
     
-    let emailTextRelay = BehaviorRelay<String>(value: "")
-    let passwdTextRealy = BehaviorRelay<String>(value: "")
-
-    private let service : DataServiceType!
-    init(service : DataServiceType = DataService()) {
-        self.service = service
- 
-    }
     
+
+//    private let service : DataServiceType!
+//    init(service : DataServiceType = DataService()) {
+//        self.service = service
+//
+//    }
+ 
     func setFormValidation() {
         isFormValid()
             .bind { v in
@@ -44,10 +48,11 @@ class LoginViewModel {
         
         return Observable
             .combineLatest(emailTextRelay, passwdTextRealy)
-            .map { email, passwd in
+            .map { [weak self] email, passwd in
                 if emailTest.evaluate(with: email) && passwd.count > 6 {
-                    self.requestingUser.email = email
-                    self.requestingUser.password = passwd
+                    
+                    self?.requestingUser.accept(LoginRequestDTO(email: email, password: passwd))
+                 
                     return true
                 } else {
                     return false
@@ -57,23 +62,18 @@ class LoginViewModel {
     
     func requestLogin() {
         FunctionClass.shared.showdialog(show: true)
-        service.loginUser(userInfo: requestingUser)
-            .subscribe(onNext : { [unowned self] res in
-                if res {
-                    self.service.getMe()
-                        .subscribe(onNext : { [unowned self] user in
-                            self.userData.onNext(user)
-                            FunctionClass.shared.showdialog(show: false)
-                        }, onError: { error  in
-                            ToastView.shared.short(txt_msg: "me failed")
-                            FunctionClass.shared.showdialog(show: false)
-                        })
-                        .disposed(by: self.disposeBag)
-                }
-                else {
+     
+        UserService.shared.postGetToken(user: requestingUser.value)
+            .subscribe(onNext : { [weak self] result in
+                
+                if let token = result.data?.token {
+                    TokenUtils.shared.createJwt(value: token)
+                    self?.requestMyInfo()
+                } else {
                     ToastView.shared.short(txt_msg: "login failed")
                     FunctionClass.shared.showdialog(show: false)
                 }
+                
             },onError: { error  in
                 ToastView.shared.short(txt_msg: "login failed")
                 FunctionClass.shared.showdialog(show: false)
@@ -82,5 +82,17 @@ class LoginViewModel {
 
     }
     
-    
+    func requestMyInfo() {
+        UserService.shared.getUserInfo()
+            .subscribe(onNext : { [weak self] user in
+                self?.userData.onNext(user)
+                FunctionClass.shared.showdialog(show: false)
+            }, onError: { error  in
+                ToastView.shared.short(txt_msg: "me failed")
+                FunctionClass.shared.showdialog(show: false)
+            })
+            .disposed(by: self.disposeBag)
+    }
+
 }
+

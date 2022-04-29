@@ -13,6 +13,8 @@ import RxSwift
 import RxCocoa
 import CoreMotion
 import RealityKit
+import Then
+import SnapKit
 
 
 class ARViewController : UIViewController , ARSCNViewDelegate {
@@ -43,26 +45,38 @@ class ARViewController : UIViewController , ARSCNViewDelegate {
     
     var image = UIImageView()
     
+    var storeButton = UIButton()
+        .then {
+            $0.setTitle("저장하기", for: .normal)
+            $0.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+            $0.setTitleColor(.black, for: .normal)
+        }
+    
+//    self.navigationItem.rightBarButtonItem = rightBtnItem
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         self.view.addSubview(sceneView)
-        let rightBtnItem = UIBarButtonItem()
-        rightBtnItem.title = "저장하기"
-        rightBtnItem.tintColor = .systemBlue
-        
-        self.navigationItem.rightBarButtonItem = rightBtnItem
+//        let rightBtnItem = UIBarButtonItem()
+//        rightBtnItem.title = "저장하기"
+//        rightBtnItem.tintColor = .systemBlue
+//
+//        self.navigationItem.rightBarButtonItem = rightBtnItem
         
         sceneView.frame = self.view.frame
         
         sceneView.delegate = self
 
+        
         makecoachingView()
         coachingViewConfiguration()
         updateFocusSquare(isObjectVisible: false)
         
         setupScene()
         makeimage()
+        
+        makeStoreButton()
         bindView()
         
         
@@ -287,6 +301,14 @@ class ARViewController : UIViewController , ARSCNViewDelegate {
     
 }
 extension ARViewController {
+    private func makeStoreButton() {
+        self.view.addSubview(storeButton)
+        storeButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(15.0)
+            $0.right.equalToSuperview().offset(-30.0)
+        }
+    }
+    
     private func makeimage(){
         self.view.addSubview(image)
         image.translatesAutoresizingMaskIntoConstraints = false
