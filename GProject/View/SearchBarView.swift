@@ -11,7 +11,7 @@ class SearchBarView: UIView {
 
     var backButton = UIButton()
         .then {
-            $0.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            $0.setImage(UIImage(named: "Back")?.resize(newWidth: 15), for: .normal)
             $0.imageEdgeInsets = UIEdgeInsets(top: 6, left: 0, bottom: 6, right: 18)
         }
 
@@ -19,7 +19,7 @@ class SearchBarView: UIView {
 
     var searchButton = UIButton()
         .then {
-            $0.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            $0.setImage((UIImage(named: "Search")?.resize(newWidth: 25))!, for: .normal)
         }
 
     override init(frame: CGRect) {

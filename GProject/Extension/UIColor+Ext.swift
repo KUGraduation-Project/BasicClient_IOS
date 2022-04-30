@@ -10,6 +10,7 @@ import UIKit
 enum Colors {
     case backgroundBlack
     case mainBlue
+    case buttonBlue
 }
 
 extension UIColor {
@@ -47,6 +48,8 @@ extension UIColor {
             return UIColor(rgb: 0x191919)
         case .mainBlue:
             return UIColor(rgb: 0x4646CD)
+        case .buttonBlue:
+            return UIColor(rgb: 0x2E4053)
         }
     }
        

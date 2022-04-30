@@ -30,13 +30,13 @@ struct NeighborListResponse: Decodable {
 struct DeleteNeighborResponse: Decodable {
     var statusCode: Int?
     var responseMessage: String?
-    var data: String?
+    var data: [NeighborDetail]?
 }
 
 struct ApproveNeighborResponse: Decodable {
     var statusCode: Int?
     var responseMessage: String?
-    var data: String?
+    var data: [NeighborDetail]?
 }
 
 //

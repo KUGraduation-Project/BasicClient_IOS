@@ -20,6 +20,11 @@ class ImageListViewController: UIViewController {
     var imageUploadBtn = UIButton()
     var capturedImage: UIImage?
     
+    let backButton = UIButton()
+        .then {
+            $0.setImage(UIImage(named: "Back")?.resize(newWidth: 15), for: .normal)
+        }
+    
     let titleLabel = UILabel()
         .then {
             $0.text = "업로드한 이미지"
@@ -47,6 +52,7 @@ class ImageListViewController: UIViewController {
         self.view.backgroundColor = UIColor.appColor(.backgroundBlack)
         maketopbox()
         makeimageUploadbtn()
+        makeBackButton()
         setTitleLabel()
         makecv()
         bindView()
@@ -95,6 +101,13 @@ class ImageListViewController: UIViewController {
                 self.navigationController?.pushViewController(view, animated: true)
             })
             .disposed(by: disposebag)
+        
+        backButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+                
+            })
+            .disposed(by: disposebag)
     }
 
     
@@ -115,10 +128,12 @@ extension ImageListViewController {
         imageUploadBtn.translatesAutoresizingMaskIntoConstraints = false
         imageUploadBtn.centerYAnchor.constraint(equalTo: topbox.centerYAnchor, constant: 0).isActive = true
         imageUploadBtn.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -25).isActive = true
-//        imageUploadBtn.widthAnchor.constraint(equalToConstant: 100).isActive = true
-//        imageUploadBtn.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        imageUploadBtn.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        imageUploadBtn.heightAnchor.constraint(equalToConstant: 25).isActive = true
+
         
-        imageUploadBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        imageUploadBtn.setImage(UIImage(systemName: "plus.rectangle.on.folder"), for: .normal)
+        imageUploadBtn.tintColor = .white
 //        imageUploadBtn.backgroundColor = .black
 //        imageUploadBtn.layer.cornerRadius = 5
 //        imageUploadBtn.setTitleColor(.white, for: .normal)
@@ -127,12 +142,19 @@ extension ImageListViewController {
 //        imageUploadBtn.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
+    private func makeBackButton() {
+        self.view.addSubview(backButton)
+        backButton.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20.0)
+            $0.centerY.equalTo(topbox)
+        }
+    }
+    
     private func setTitleLabel() {
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.centerY.equalTo(topbox)
-            $0.left.equalToSuperview().offset(20.0)
-            $0.right.equalToSuperview().offset(-20.0)
+            $0.left.equalTo(backButton.snp.right).offset(20.0)
         }
     }
     

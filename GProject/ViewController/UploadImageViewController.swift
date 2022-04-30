@@ -19,6 +19,11 @@ class UploadImageViewController: UIViewController {
     var okayButton = UIButton()
     var imagePicker = UIImagePickerController()
     
+    let backButton = UIButton()
+        .then {
+            $0.setImage(UIImage(named: "Back")?.resize(newWidth: 15), for: .normal)
+        }
+    
     var indicator = UIActivityIndicatorView()
     
     var capturedImage: UIImage!
@@ -28,7 +33,7 @@ class UploadImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.appColor(.backgroundBlack)
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
@@ -47,7 +52,7 @@ class UploadImageViewController: UIViewController {
         view.addSubview(imageView)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "image_default")?.resize(newWidth: UIScreen.main.bounds.width*3/4)
+        imageView.image = UIImage(systemName: "house.fill")?.resize(newWidth: UIScreen.main.bounds.width*2/4)
         imageView.contentMode = .scaleAspectFit
         imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -64,8 +69,8 @@ class UploadImageViewController: UIViewController {
     }
     
     private func setUploadButton() {
-        uploadButton.setTitle("사진 선택하기", for: .normal)
-        uploadButton.backgroundColor = .lightGray
+        uploadButton.setTitle("Select Image", for: .normal)
+        uploadButton.backgroundColor = UIColor.appColor(.buttonBlue)
         uploadButton.layer.cornerRadius = 5
         uploadButton.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         
@@ -84,8 +89,8 @@ class UploadImageViewController: UIViewController {
     }
     
     private func setOkayButton() {
-        okayButton.setTitle("확인", for: .normal)
-        okayButton.backgroundColor = .lightGray
+        okayButton.setTitle("Upload", for: .normal)
+        okayButton.backgroundColor = UIColor.appColor(.buttonBlue)
         okayButton.layer.cornerRadius = 5
         okayButton.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         

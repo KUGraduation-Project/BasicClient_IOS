@@ -27,6 +27,12 @@
 		04335E8A281BE7B500BA765C /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E89281BE7B500BA765C /* UIColor+Ext.swift */; };
 		04335E8C281BF2C800BA765C /* NeighborProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E8B281BF2C800BA765C /* NeighborProjectListViewController.swift */; };
 		04335E8E281BF32C00BA765C /* NeighborProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E8D281BF32C00BA765C /* NeighborProjectListViewModel.swift */; };
+		04335E91281C2F6E00BA765C /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 04335E90281C2F6E00BA765C /* Home.png */; };
+		04335E93281C2F7B00BA765C /* Neighbor.png in Resources */ = {isa = PBXBuildFile; fileRef = 04335E92281C2F7B00BA765C /* Neighbor.png */; };
+		04335E95281C2F9E00BA765C /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 04335E94281C2F9E00BA765C /* Back.png */; };
+		04335E97281C2FCE00BA765C /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04335E96281C2FCE00BA765C /* UIImage+Ext.swift */; };
+		04335E99281C306D00BA765C /* Search.png in Resources */ = {isa = PBXBuildFile; fileRef = 04335E98281C306D00BA765C /* Search.png */; };
+		04335E9B281C318100BA765C /* Notice.png in Resources */ = {isa = PBXBuildFile; fileRef = 04335E9A281C318100BA765C /* Notice.png */; };
 		04435F31269B16EF00030944 /* kakao_login_medium_narrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 04435F30269B16EF00030944 /* kakao_login_medium_narrow.png */; };
 		04435F33269B25D200030944 /* kakao_signup_medium_narrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 04435F32269B25D200030944 /* kakao_signup_medium_narrow.png */; };
 		04435F35269B56F700030944 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04435F34269B56F700030944 /* ProjectListViewController.swift */; };
@@ -134,6 +140,12 @@
 		04335E89281BE7B500BA765C /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		04335E8B281BF2C800BA765C /* NeighborProjectListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborProjectListViewController.swift; sourceTree = "<group>"; };
 		04335E8D281BF32C00BA765C /* NeighborProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborProjectListViewModel.swift; sourceTree = "<group>"; };
+		04335E90281C2F6E00BA765C /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home.png; sourceTree = "<group>"; };
+		04335E92281C2F7B00BA765C /* Neighbor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Neighbor.png; sourceTree = "<group>"; };
+		04335E94281C2F9E00BA765C /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
+		04335E96281C2FCE00BA765C /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		04335E98281C306D00BA765C /* Search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Search.png; sourceTree = "<group>"; };
+		04335E9A281C318100BA765C /* Notice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Notice.png; sourceTree = "<group>"; };
 		04435F30269B16EF00030944 /* kakao_login_medium_narrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakao_login_medium_narrow.png; sourceTree = "<group>"; };
 		04435F32269B25D200030944 /* kakao_signup_medium_narrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakao_signup_medium_narrow.png; sourceTree = "<group>"; };
 		04435F34269B56F700030944 /* ProjectListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				04335E89281BE7B500BA765C /* UIColor+Ext.swift */,
+				04335E96281C2FCE00BA765C /* UIImage+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -269,6 +282,11 @@
 		04435F2F269B16D100030944 /* icon */ = {
 			isa = PBXGroup;
 			children = (
+				04335E9A281C318100BA765C /* Notice.png */,
+				04335E98281C306D00BA765C /* Search.png */,
+				04335E94281C2F9E00BA765C /* Back.png */,
+				04335E92281C2F7B00BA765C /* Neighbor.png */,
+				04335E90281C2F6E00BA765C /* Home.png */,
 				04EE8E5C27316A1000A28B34 /* image_default.png */,
 				04328B0127250CED00186DD1 /* addImage.png */,
 				04435F32269B25D200030944 /* kakao_signup_medium_narrow.png */,
@@ -630,13 +648,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04335E95281C2F9E00BA765C /* Back.png in Resources */,
 				04435F31269B16EF00030944 /* kakao_login_medium_narrow.png in Resources */,
 				2F9CB4B9272541C600476A90 /* data.json in Resources */,
+				04335E93281C2F7B00BA765C /* Neighbor.png in Resources */,
+				04335E9B281C318100BA765C /* Notice.png in Resources */,
 				04435F33269B25D200030944 /* kakao_signup_medium_narrow.png in Resources */,
 				2F9CB4BA272541C600476A90 /* coordinates.json in Resources */,
 				0449D805269AF03800BCC781 /* LaunchScreen.storyboard in Resources */,
 				04EE8E5D27316A1000A28B34 /* image_default.png in Resources */,
+				04335E99281C306D00BA765C /* Search.png in Resources */,
 				2F9CB4B62725409200476A90 /* Models.scnassets in Resources */,
+				04335E91281C2F6E00BA765C /* Home.png in Resources */,
 				04328B0227250CED00186DD1 /* addImage.png in Resources */,
 				0449D802269AF03800BCC781 /* Assets.xcassets in Resources */,
 			);
@@ -711,6 +734,7 @@
 				2FCE866E27253996002100FA /* ObjectSelectViewController.swift in Sources */,
 				2FCE8683272539B9002100FA /* FocusSquareSegment.swift in Sources */,
 				2FCE86682725397E002100FA /* ARViewModel.swift in Sources */,
+				04335E97281C2FCE00BA765C /* UIImage+Ext.swift in Sources */,
 				2FCE8682272539B9002100FA /* VirtualObjectARView.swift in Sources */,
 				2F9CB4B427253A1E00476A90 /* ViewCoordinator.swift in Sources */,
 				04335E8A281BE7B500BA765C /* UIColor+Ext.swift in Sources */,

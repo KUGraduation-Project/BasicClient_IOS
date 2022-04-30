@@ -50,7 +50,7 @@ class NeighborListViewModel {
     func bindApplyButton(neighbor: Neighbor) {
         NeighborService.shared.postRequestNeighbor(neighbor: neighbor)
             .bind { response in
-                print(response.data ?? "No answer")
+                ToastView.shared.short(txt_msg: response.data ?? "이웃 신청 실패")
             }
             .disposed(by: disposeBag)
     }
@@ -58,7 +58,7 @@ class NeighborListViewModel {
     func bindDeleteNeighborButton(neighborId: Int) {
         NeighborService.shared.deleteNeighbor(neighborId: neighborId)
             .bind { [weak self] response in
-                self?.bindNeighborList()
+                self?.neighborList.accept([SectionModel(model: "", items: response.data ?? [])])
             }
             .disposed(by: disposeBag)
     }
@@ -66,7 +66,7 @@ class NeighborListViewModel {
     func bindApplyNeighborButton(neighborDetail: NeighborDetail) {
         NeighborService.shared.postApproveNeighbor(neighborDetail: neighborDetail)
             .bind { [weak self] response in
-                self?.bindNeighborList()
+                self?.appliedNeighborList.accept([SectionModel(model: "", items: response.data ?? [])])
             }
             .disposed(by: disposeBag)
     }

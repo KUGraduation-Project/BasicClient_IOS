@@ -21,6 +21,7 @@ class NeighborSearchViewController: UIViewController {
     
     var searchListTableView = UITableView()
         .then {
+            $0.backgroundColor = .clear
             $0.isUserInteractionEnabled = true
             $0.register(NeighborTableViewCell.self, forCellReuseIdentifier: NeighborTableViewCell.identifier)
         }
@@ -78,6 +79,12 @@ class NeighborSearchViewController: UIViewController {
     }
     
     func bindView() {
+        searchBar.backButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+        
         searchBar.searchField.rx.text
             .orEmpty
             .filter { !$0.isEmpty }

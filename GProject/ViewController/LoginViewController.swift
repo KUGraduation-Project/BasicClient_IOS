@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
         let stackV = UIStackView(arrangedSubviews: [self.appNameLabel ,self.emailForm, self.passwdForm, self.loginButton, self.registerButton, self.kakaoLoginButton, self.kakaoRegisterButton])
         
         stackV.axis = .vertical
-        stackV.spacing = 20
+        stackV.spacing = 15
         stackV.alignment = .fill
         stackV.distribution = .fillProportionally
         return stackV
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.appColor(.backgroundBlack)
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         setStackView()
         bindViewModel()
@@ -58,38 +58,52 @@ class LoginViewController: UIViewController {
         stackView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 100).isActive = true
         stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        stackView.setCustomSpacing(50, after: appNameLabel)
+        stackView.setCustomSpacing(25, after: passwdForm)
     }
     
     private func setAppNameLabel() {
         appNameLabel.text = "3D home"
-        appNameLabel.font = UIFont(name: "ArialMT", size: 40)
+        appNameLabel.textColor = .white
+        appNameLabel.font = UIFont.boldSystemFont(ofSize: 50)
+//        appNameLabel.font = UIFont(name: "ArialMT", size: 40)
         appNameLabel.textAlignment = .center
-        
     }
     
     private func setForm() {
         emailForm.borderStyle = .roundedRect
+        
         emailForm.placeholder = "email"
-        emailForm.text = "bbb@naver.com"
+        emailForm.text = "catbus@konkuk.ac.kr"
+        emailForm.textColor = .white
+        emailForm.backgroundColor = UIColor(rgb: 0x566573)
         
         passwdForm.borderStyle = .roundedRect
+       
         passwdForm.isSecureTextEntry = true
         passwdForm.placeholder = "password"
         passwdForm.text = "password"
+        passwdForm.textColor = .white
+        
+        passwdForm.backgroundColor = UIColor(rgb: 0x566573)
     }
     
     private func setLoginButton() {
+        loginButton.setContentHuggingPriority(.required, for: .vertical)
+        loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         loginButton.setTitle("로그인", for: .normal)
-        loginButton.backgroundColor = .black
         loginButton.titleLabel?.textColor = .white
         loginButton.layer.cornerRadius = 5
+        loginButton.titleEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        loginButton.backgroundColor = UIColor.appColor(.buttonBlue)
     }
     
     private func setRegisterButton() {
-        registerButton.setTitle("회원가입", for: .normal)
-        registerButton.titleLabel?.textColor = .white
-        registerButton.backgroundColor = .black
-        registerButton.layer.cornerRadius = 5
+        registerButton.setTitle("회원가입하기", for: .normal)
+        registerButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .thin)
+        registerButton.setTitleColor(UIColor(rgb: 0x909497), for: .normal)
+        
     }
     
     func bindViewModel() {
@@ -149,7 +163,8 @@ class LoginViewController: UIViewController {
         let listPage = TabBarViewController()
         
         let navController = UINavigationController(rootViewController: listPage)
-            
+        
+        navController.interactivePopGestureRecognizer?.isEnabled = true
         navController.isNavigationBarHidden = true
         
         guard let scene = UIApplication.shared.connectedScenes.first else { return }

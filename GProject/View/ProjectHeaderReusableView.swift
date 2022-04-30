@@ -21,7 +21,7 @@ class ProjectHeaderReusableView: UICollectionReusableView {
     
     var titleLabel = UILabel()
         .then {
-            $0.text = "내 프로젝트"
+            $0.text = "My Project"
             $0.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
             $0.textColor = .white
         }

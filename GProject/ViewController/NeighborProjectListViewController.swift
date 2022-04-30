@@ -23,6 +23,12 @@ class NeighborProjectListViewController: UIViewController {
     
     var projectCV: UICollectionView!
     
+    let backButton = UIButton()
+            .then {
+                $0.setImage(UIImage(named: "Back")?.resize(newWidth: 15), for: .normal)
+            }
+
+    
     let titleLabel = UILabel()
         .then {
             $0.textColor = .white
@@ -78,7 +84,7 @@ class NeighborProjectListViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor.appColor(.backgroundBlack)
         
-        titleLabel.text = "\(viewModel.neighbor.value.nickname ?? "NaN")님의 프로젝트"
+        titleLabel.text = "\(viewModel.neighbor.value.nickname ?? "NaN")'s Project"
         
         projectCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
         projectCV.backgroundColor = .clear
@@ -87,10 +93,15 @@ class NeighborProjectListViewController: UIViewController {
     }
     
     private func layoutView() {
+        view.addSubview(backButton)
+        backButton.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20.0)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20.0)
+        }
+        
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(20.0)
-            $0.right.equalToSuperview().offset(-20.0)
+            $0.left.equalTo(backButton.snp.right).offset(20.0)
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20.0)
         }
         
@@ -104,6 +115,12 @@ class NeighborProjectListViewController: UIViewController {
     }
     
     private func bindView() {
+        backButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.projectList
             .asDriver()
             .drive(projectCV.rx.items(dataSource: dataSource))

@@ -26,7 +26,6 @@ class NeighborListViewController: UIViewController {
         
         cell.secondButtonTappedHandler = { [weak self] in
             self?.viewModel.bindDeleteNeighborButton(neighborId: element.neighborId ?? 0)
-            self?.neighborListTableView.reloadData()
         }
         
         return cell
@@ -34,24 +33,25 @@ class NeighborListViewController: UIViewController {
     
     let titleLabel = UILabel()
         .then {
-            $0.text = "이웃들의 프로젝트"
+            $0.text = "Neighbors' Project"
             $0.font = UIFont.systemFont(ofSize: 27.0, weight: .bold)
             $0.textColor = .white
         }
     
     let searchButton = UIButton()
         .then {
-            $0.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            $0.setImage((UIImage(named: "Search")?.resize(newWidth: 25))!, for: .normal)
         }
     
     let noticeButton = UIButton()
         .then {
-            $0.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            $0.setImage((UIImage(named: "Notice")?.resize(newWidth: 25))!, for: .normal)
+//            $0.setImage(UIImage(systemName: "bell"), for: .normal)
         }
     
     let neighborListTableView = UITableView()
         .then {
-            $0.backgroundColor = .clear
+            $0.backgroundColor = UIColor.appColor(.backgroundBlack)
             $0.register(NeighborTableViewCell.self, forCellReuseIdentifier: NeighborTableViewCell.identifier)
         }
 

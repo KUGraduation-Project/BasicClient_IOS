@@ -27,6 +27,12 @@ class ProjectListViewController: UIViewController {
             $0.font = UIFont.systemFont(ofSize: 30.0, weight: .bold)
         }
     
+    let settingButton = UIButton()
+        .then {
+            $0.setImage(UIImage(systemName: "gearshape"), for: .normal)
+            $0.tintColor = .white
+        }
+    
     var projectCV: UICollectionView!
     
     let layout = UICollectionViewFlowLayout()
@@ -117,6 +123,13 @@ class ProjectListViewController: UIViewController {
             $0.right.equalToSuperview().offset(-20.0)
         }
         
+        view.addSubview(settingButton)
+        settingButton.snp.makeConstraints {
+            $0.right.equalToSuperview().offset(-20.0)
+            $0.centerY.equalTo(titleLabel)
+            $0.size.equalTo(30.0)
+        }
+        
         view.addSubview(projectCV)
         projectCV.snp.makeConstraints {
             $0.left.equalToSuperview().offset(20.0)
@@ -134,12 +147,7 @@ class ProjectListViewController: UIViewController {
         
         projectCV.rx.modelSelected(ProjectListObjectData.self)
             .subscribe(onNext : { [unowned self] model in
-//                if model.imageFileId == -1 || model.projectId == -1 {
-//                    moveToImageListPage
-//                }
-//                else {
                     coordinator.start(projectId: model.projectId ?? 0)
-//                }
             })
             .disposed(by: disposeBag)
     }

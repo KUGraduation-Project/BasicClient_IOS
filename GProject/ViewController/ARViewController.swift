@@ -47,9 +47,16 @@ class ARViewController : UIViewController , ARSCNViewDelegate {
     
     var storeButton = UIButton()
         .then {
-            $0.setTitle("저장하기", for: .normal)
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-            $0.setTitleColor(.black, for: .normal)
+            $0.layer.cornerRadius = 10
+            $0.backgroundColor = .black
+            $0.setTitle("Save", for: .normal)
+            $0.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+            $0.setTitleColor(.white, for: .normal)
+        }
+    
+    let backButton = UIButton()
+        .then {
+            $0.setImage(UIImage(named: "Back")?.resize(newWidth: 15), for: .normal)
         }
     
 //    self.navigationItem.rightBarButtonItem = rightBtnItem
@@ -76,6 +83,7 @@ class ARViewController : UIViewController , ARSCNViewDelegate {
         setupScene()
         makeimage()
         
+        makeBackButton()
         makeStoreButton()
         bindView()
         
@@ -136,8 +144,23 @@ class ARViewController : UIViewController , ARSCNViewDelegate {
         
     }
     
+    private func makeBackButton() {
+        self.view.addSubview(backButton)
+        backButton.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20.0)
+            $0.top.equalToSuperview().offset(20.0)
+        }
+    }
+    
     
     func bindView(){
+        backButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+                
+            })
+            .disposed(by: disposebag)
+        
         viewmodel.walls2.subscribe(onNext : { [unowned self] walls in
             for wall in walls.wall {
                 self.node.addChildNode(wall)
@@ -175,7 +198,7 @@ class ARViewController : UIViewController , ARSCNViewDelegate {
             .disposed(by: disposebag)
         
         //action
-        self.navigationItem.rightBarButtonItem?.rx.tap
+        self.storeButton.rx.tap
             .subscribe(onNext : { [unowned self] in
                 viewmodel.uploadFurnitures()
             })
@@ -304,8 +327,9 @@ extension ARViewController {
     private func makeStoreButton() {
         self.view.addSubview(storeButton)
         storeButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(15.0)
-            $0.right.equalToSuperview().offset(-30.0)
+            $0.top.equalToSuperview().offset(20.0)
+            $0.right.equalToSuperview().offset(-20.0)
+            $0.width.equalTo(80)
         }
     }
     

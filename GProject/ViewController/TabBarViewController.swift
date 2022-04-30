@@ -12,6 +12,8 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tabBar.tintColor = .white
+        
         createBarItems()
     }
     
@@ -19,10 +21,10 @@ class TabBarViewController: UITabBarController {
         viewControllers = [
             createNavController(for: ProjectListViewController(),
                                    title: "My",
-                                image: UIImage(systemName: "heart.fill")!),
+                                image: (UIImage(named: "Home")?.resize(newWidth: 25))!),
             createNavController(for: NeighborListViewController(),
                                    title: "Neighbor",
-                                   image: UIImage(systemName: "heart.fill")!)
+                                image: (UIImage(named: "Neighbor")?.resize(newWidth: 25))!)
            
         ]
     }

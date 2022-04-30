@@ -44,7 +44,10 @@ class ViewCoordinator  {
                 if done {
                     guard let scene = UIApplication.shared.connectedScenes.first else { return }
                     guard let del = scene.delegate as? SceneDelegate else { return }
-                    (del.window?.rootViewController as? UINavigationController)?.pushViewController(rootView, animated: true)
+                    
+                    let navController = del.window?.rootViewController as? UINavigationController
+                   
+                    navController?.pushViewController(rootView, animated: true)
                 }
                 else {
                     ToastView.shared.short(txt_msg: msg)

@@ -28,30 +28,34 @@ class NeighborNoticeViewController: UIViewController {
             var neighborDetail: NeighborDetail = element
             neighborDetail.isApprove = true
             self?.viewModel.bindApplyNeighborButton(neighborDetail: neighborDetail)
-            self?.appliedNeighborListTableView.reloadData()
             
         }
         
         cell.secondButtonTappedHandler = { [weak self] in
+            print("TAPP")
             var neighborDetail: NeighborDetail = element
             neighborDetail.isApprove = false
             self?.viewModel.bindApplyNeighborButton(neighborDetail: neighborDetail)
-            
-            self?.appliedNeighborListTableView.reloadData()
         }
         
         return cell
     })
     
+    let backButton = UIButton()
+            .then {
+                $0.setImage(UIImage(named: "Back")?.resize(newWidth: 15), for: .normal)
+            }
+    
     let titleLabel = UILabel()
         .then {
-            $0.text = "이웃 요청 목록"
-            $0.font = UIFont.systemFont(ofSize: 30.0, weight: .bold)
-            $0.textColor = .black
+            $0.text = "Neighbor Request"
+            $0.font = UIFont.systemFont(ofSize: 27.0, weight: .bold)
+            $0.textColor = .white
         }
     
     let appliedNeighborListTableView = UITableView()
         .then {
+            $0.backgroundColor = .clear
             $0.register(NeighborTableViewCell.self, forCellReuseIdentifier: NeighborTableViewCell.identifier)
         }
 
@@ -73,10 +77,16 @@ class NeighborNoticeViewController: UIViewController {
     }
     
     func layoutView() {
+        view.addSubview(backButton)
+        backButton.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20.0)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20.0)
+        }
+        
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(10.0)
-            $0.left.equalToSuperview().offset(20.0)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(17.0)
+            $0.left.equalTo(backButton.snp.right).offset(20.0)
         }
         
         view.addSubview(appliedNeighborListTableView)
@@ -89,6 +99,13 @@ class NeighborNoticeViewController: UIViewController {
     }
     
     func bindView() {
+        backButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+                
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.appliedNeighborList
             .asDriver()
             .drive(appliedNeighborListTableView.rx.items(dataSource: dataSource))

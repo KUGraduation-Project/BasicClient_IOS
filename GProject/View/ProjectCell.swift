@@ -22,7 +22,8 @@ class ProjectCell: UICollectionViewCell {
     var titleLabel = UILabel()
     var downloadButton = UIButton()
         .then {
-            $0.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            $0.setImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
+            $0.tintColor = .white
         }
     
     override init(frame: CGRect) {

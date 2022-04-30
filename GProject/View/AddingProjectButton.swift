@@ -23,7 +23,7 @@ class AddingProjectButton: UIButton {
     
     var textLabel = UILabel()
         .then {
-            $0.text = "프로젝트 추가"
+            $0.text = "Add project"
             $0.textColor = .white
             $0.font = UIFont.systemFont(ofSize: 13)
         }
